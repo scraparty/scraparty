@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scraparty-gateway
+  labels:
+    app: scraparty-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scraparty-gateway
+  template:
+    metadata:
+      labels:
+        app: scraparty-gateway
+    spec:
+      containers:
+        - name: scraparty-gateway
+          image: sthanguy/scraparty-gateway
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000

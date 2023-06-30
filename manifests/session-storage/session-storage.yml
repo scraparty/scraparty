@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: session-storage
+  labels:
+    app: session-storage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: session-storage
+  template:
+    metadata:
+      labels:
+        app: session-storage
+    spec:
+      containers:
+        - name: session-storage
+          image: redis
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 6379
